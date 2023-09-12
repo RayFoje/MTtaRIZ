@@ -1,16 +1,17 @@
+import java.util.Scanner;
+
 public class LB2 {
     public static void main(String[] args) {
-        int levels = 6; 
-        int rows = 4; 
-        int cols = 5; 
-        Tree(levels);
-        int[][] array = createIntArray(rows, cols);
-        printIntArray(array);
-        
-
+        LB2 obj = new LB2();
+        obj.Tree();
+        obj.Array();
     }
 
-    public static void Tree(int levels) {
+    public void Tree() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Введiть кiлькiсть рiвнiв ялинки: ");
+        int levels = in.nextInt();
+        in.close();
         System.out.print("Ялинка:\n");
         for (int i = 0; i < levels; i++) {
               for (int j = 0; j < levels - i - 1; j++) {
@@ -24,28 +25,25 @@ public class LB2 {
             System.out.println(); 
         }
     }
-    
-    public static int[][] createIntArray(int rows, int cols) {
+
+    public void Array() {
+        int rows = 5; 
+        int cols = 5; 
         int[][] array = new int[rows][cols];
-        int value = 3;
-        System.out.print("Масив:\n");
+        int a = 3; 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                array[i][j] = value;
-                value += 3;
+                array[i][j] = a;
+                a += 3;
             }
         }
-
-        return array;
-    }
-
-    public static void printIntArray(int[][] array) {
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
                 System.out.print(array[i][j] + " ");
             }
-            System.out.println(); 
+            System.out.println();
         }
+
     }
 
 }
