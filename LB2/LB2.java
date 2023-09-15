@@ -26,6 +26,8 @@ public class LB2 {
         }
     }
 
+    
+
     public void Array() {
         int rows = 5; 
         int cols = 5; 

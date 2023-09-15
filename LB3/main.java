@@ -2,6 +2,23 @@ import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) {
+        main objMain = new main();
+        objMain.game();
+    }
+
+    public static boolean full(gameboard game_board) {
+        char[][] board = game_board.get_b();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] == ' ') {
+                    return false; 
+                }
+            }
+        }
+        return true; 
+    }
+
+    public void game() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Iм'я гравця 1 (Х): ");
@@ -18,7 +35,7 @@ public class main {
 
         System.out.println("Починаємо гру!");
 
-        while (!gameOver) {
+         while (!gameOver) {
             currentPlayer.info();
             game_board.display();
 
@@ -39,17 +56,5 @@ public class main {
                 System.out.println("Невiрний хiд. Спробуйте ще раз.");
             }
         }
-    }
-
-    public static boolean full(gameboard game_board) {
-        char[][] board = game_board.get_b();
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (board[i][j] == ' ') {
-                    return false; 
-                }
-            }
-        }
-        return true; 
     }
 }
