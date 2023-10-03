@@ -35,12 +35,16 @@ public class main {
         password = System.console().readLine();
         try {
               Statement stmt = con.createStatement();
-                ResultSet rs = stmt.executeQuery(
-                    "SELECT count(*) FROM users WHERE username='" + username + "' and password='" + password + "';");
-            while (rs.next())
-                if (rs.getInt(1) == 1) {
-                    return true;
-                } else{
+                //ResultSet rs = stmt.executeQuery(
+                    //"SELECT count(*) FROM users WHERE username='" + username + "' and password='" + password + "';");
+                ResultSet rs1 = stmt.executeQuery(
+                    "SELECT count(*) FROM users WHERE username='" + username + "';");   
+            while (rs1.next())
+                if (rs1.getInt(1) == 1) {
+                    return false;
+                } 
+                if(rs1.getInt(1) == 0)
+                {
                     String sql = " insert into users (username, password)" + " values (?, ?)";
                     PreparedStatement preparedStmt = con.prepareStatement(sql);
                     preparedStmt.setString(1, username);
@@ -48,7 +52,8 @@ public class main {
                     preparedStmt.execute();
                     System.out.print("Реєстрацiя успiшна!\n");
                 }
-        } catch (Exception e) {
+            }
+        catch (Exception e) {
             System.out.println(e);
             return false;
         }
