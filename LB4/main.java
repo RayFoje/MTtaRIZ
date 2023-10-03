@@ -43,7 +43,7 @@ public class main {
                 if (rs1.getInt(1) == 1) {
                     return false;
                 } 
-                if(rs1.getInt(1) == 0)
+                else
                 {
                     String sql = " insert into users (username, password)" + " values (?, ?)";
                     PreparedStatement preparedStmt = con.prepareStatement(sql);
